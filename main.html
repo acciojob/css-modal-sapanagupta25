@@ -1,76 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modal Example</title>
-    <style>
-        /* Styling for modal */
-        .modal {
-            display: none; /* Initially hidden */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            width: 50%;
-        }
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: green;
-            color: white;
-            padding: 10px;
-        }
-        .close-modal {
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-size: 20px;
-            color: white;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modal Example</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button id="openModal">Open Modal</button>
-    
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Modal Header</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>Modal Body Content</p>
-            </div>
-        </div>
+
+<button id="openModal">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Modal Header</h2>
+      <button class="close-modal">&times;</button>
     </div>
-    
-    <script>
-        document.getElementById("openModal").addEventListener("click", function() {
-            document.getElementById("modal").style.display = "flex";
-        });
+    <div class="modal-body">
+      <p>Modal Body Content</p>
+    </div>
+  </div>
+</div>
 
-        document.querySelector(".close-modal").addEventListener("click", function() {
-            document.getElementById("modal").style.display = "none";
-        });
+<script>
+// JavaScript to open/close the modal
+document.getElementById('openModal').onclick = function() {
+  document.getElementById('myModal').style.display = "block";
+}
 
-        window.addEventListener("click", function(event) {
-            if (event.target.id === "modal") {
-                document.getElementById("modal").style.display = "none";
-            }
-        });
-    </script>
+// Close the modal when clicking outside of it or on the close button
+window.onclick = function(event) {
+  var modal = document.getElementById('myModal');
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+document.querySelector('.close-modal').onclick = function() {
+  document.getElementById('myModal').style.display = "none";
+}
+</script>
+
 </body>
 </html>
 
